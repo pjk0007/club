@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:samsung_club/navigations/setting.dart';
 import 'cst_bottom_nav.dart' as cst_bottom_nav;
 
 class More extends StatelessWidget {
@@ -9,6 +11,22 @@ class More extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(cst_bottom_nav.bottomNav[3]['title']),
+        actions: [
+          Row(
+            children: [
+              IconButton(
+                  onPressed: () {
+                    Navigator.push(context,CupertinoPageRoute(builder: (c) => Setting())
+                    );
+                  },
+                  icon: Icon(Icons.settings)
+              ),
+              SizedBox(
+                width: 20,
+              )
+            ],
+          )
+        ],
       ),
     );
   }

@@ -43,7 +43,12 @@ class _MyAppState extends State<MyApp> {
                   label: e['label'],
                   icon: Icon(e['icon']),
                   activeIcon: Icon(e['activateIcon'])))
-              .toList()),
+              .toList()
+      ),
+      floatingActionButton: tab!=3 ? FloatingActionButton(
+        onPressed: (){},
+        child: Icon(Icons.add),
+      ) : null,
     );
   }
 }

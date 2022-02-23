@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:samsung_club/cst_bottom_nav.dart' as cst_bottom_nav;
+import 'package:samsung_club/navigations/alarm.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -12,12 +14,19 @@ class Home extends StatelessWidget {
         actions: [
           Row(
             children: [
-              Icon(Icons.notifications_none_outlined),
-              SizedBox(width: 20,)
+              IconButton(
+                onPressed: () {
+                  Navigator.push(context,CupertinoPageRoute(builder: (c) => Alarm())
+                  );
+                },
+                icon: Icon(Icons.notifications_none_outlined)
+              ),
+              SizedBox(
+                width: 20,
+              )
             ],
           )
         ],
-
       ),
     );
   }

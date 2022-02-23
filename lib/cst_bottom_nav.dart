@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:samsung_club/club.dart';
+import 'package:samsung_club/group.dart';
 import 'package:samsung_club/home.dart';
 import 'package:samsung_club/more.dart';
-import 'package:samsung_club/study.dart';
 
 List<dynamic> bottomNav = [
   {
@@ -17,14 +17,14 @@ List<dynamic> bottomNav = [
     'label': '클럽',
     'icon': Icons.search_outlined,
     'activateIcon': Icons.search,
-    'body': Study()
+    'body': Club()
   },
   {
     'title': '그룹',
     'label': '그룹',
     'icon': Icons.people_alt_outlined,
     'activateIcon': Icons.people_alt,
-    'body':Club()
+    'body':Group()
   },
   {
     'title' : '더보기',
