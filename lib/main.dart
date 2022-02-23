@@ -26,29 +26,47 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   int tab = 0;
+  PageController pageController = PageController();
+
+  @override
+  void initState() {
+    super.initState();
+    pageController = PageController();
+  }
+
+  @override
+  void dispose() {
+    pageController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: cst_bottomnavbar.bottomNav[tab]['body'],
-      bottomNavigationBar: BottomNavigationBar(
-          currentIndex: tab,
-          onTap: (index) {
-            setState(() {
-              tab = index;
-            });
+      body: SizedBox.expand(
+        child: PageView(
+          controller: pageController,
+          onPageChanged: (index) {
+            setState(() => tab = index);
           },
-          items: cst_bottomnavbar.bottomNav
-              .map((e) => BottomNavigationBarItem(
-                  label: e['label'],
-                  icon: Icon(e['icon']),
-                  activeIcon: Icon(e['activateIcon'])))
-              .toList()
+          children: cst_bottomnavbar.bottomNav.map((e) => Container(child: e['body'])).toList(),
+        ),
       ),
-      floatingActionButton: tab!=3 ? FloatingActionButton(
-        onPressed: (){},
-        child: Icon(Icons.add),
-      ) : null,
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: tab,
+        onTap: (index) {
+          setState(() {
+            tab = index;
+            pageController.animateToPage(index, duration: Duration(milliseconds: 200), curve: Curves.easeInOut);
+          });
+        },
+        items: cst_bottomnavbar.bottomNav
+            .map((e) => BottomNavigationBarItem(
+                label: e['label'],
+                icon: Icon(e['icon']),
+                activeIcon: Icon(e['activateIcon'])))
+            .toList()
+      ),
     );
   }
 }

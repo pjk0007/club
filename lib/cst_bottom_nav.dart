@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:samsung_club/club.dart';
-import 'package:samsung_club/group.dart';
-import 'package:samsung_club/home.dart';
-import 'package:samsung_club/more.dart';
+import 'package:samsung_club/main/club.dart';
+import 'package:samsung_club/main/group.dart';
+import 'package:samsung_club/main/home.dart';
+import 'package:samsung_club/main/more.dart';
 
 List<dynamic> bottomNav = [
   {

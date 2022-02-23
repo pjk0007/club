@@ -3,13 +3,43 @@ import 'package:flutter/material.dart';
 import 'package:samsung_club/cst_bottom_nav.dart' as cst_bottom_nav;
 import 'package:samsung_club/navigations/alarm.dart';
 
-class Group extends StatelessWidget {
+class Group extends StatefulWidget {
   const Group({Key? key}) : super(key: key);
+
+  @override
+  State<Group> createState() => _GroupState();
+}
+
+class _GroupState extends State<Group> {
+  ScrollController scroll = ScrollController();
+  double elevation = 0.0;
+
+  @override
+  void initState() {
+    super.initState();
+    scroll.addListener(() {
+      setState(() {
+        if(scroll.position.pixels > 0){
+          elevation = 5.0;
+        } else{
+          elevation = 0.0;
+        }
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: ListView.builder(
+          itemCount: 300,
+          controller: scroll,
+          itemBuilder: (c,i){
+            return Text('asd');
+          }
+      ),
       appBar: AppBar(
+        elevation: elevation,
         title: Text(cst_bottom_nav.bottomNav[2]['title']),
         actions: [
           Row(
@@ -28,6 +58,10 @@ class Group extends StatelessWidget {
           )
         ],
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){},
+        child: Icon(Icons.add),
+      )
     );
   }
 }

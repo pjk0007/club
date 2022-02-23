@@ -7,7 +7,7 @@ class Setting extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('세팅'),
+        title: Text('환경설정'),
       ),
     );
   }
